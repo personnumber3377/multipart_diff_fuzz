@@ -1,0 +1,60 @@
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Content-Length: 676
+Content-Type: multipart/form-data; boundary=----------------------------
+
+------------------------------
+Content-Disposition: form-data; name="sendfile"; filename="postit2.c"
+
+dummy
+
+------------------------------
+Content-Disposition: form-data; name="callbackdata"
+
+dummy
+
+------------------------------
+Content-Disposition: form-data; name="filename"
+
+postit2.c
+------------------------------
+Content-Disposition: form-data; name="submit"
+
+send
+------------------------------
+Content-Disposition: form-data; name="somename"; filename="somefile.txt"
+Content-Type: text/plain
+
+blah blah
+--------------------------------
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Content-Length: 690
+Content-Type: multipart/form-data; boundary=----------------------------
+
+------------------------------
+Content-Disposition: form-data; name="sendfile alternative"; filename="file name 2"
+
+dummy
+
+------------------------------
+Content-Disposition: form-data; name="callbackdata"
+
+dummy
+
+------------------------------
+Content-Disposition: form-data; name="filename"
+
+postit2.c
+------------------------------
+Content-Disposition: form-data; name="submit"
+
+send
+------------------------------
+Content-Disposition: form-data; name="somename"; filename="somefile.txt"
+Content-Type: text/plain
+
+blah blah
+--------------------------------

@@ -1,0 +1,5 @@
+EHLO %TESTNUMBER
+MAIL FROM:<sender@example.com>
+RCPT TO:<recipient@example.com>
+DATA
+QUIT

@@ -1,0 +1,38 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 930
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+----RubyBoundary
+Content-Disposition: form-data; name="name"
+
+value
+----RubyBoundary
+Content-Disposition: form-data; name="file"
+Content-Type: multipart/mixed; boundary=----------------------------aaaaaaaaaaaa
+
+Content-Disposition: attachment; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+
+dummy data
+
+----RubyBoundary
+Content-Disposition: attachment; filename="test%TESTNUMBER.txt"
+Content-Type: magic/content
+Content-Transfer-Encoding: 8bit
+
+dummy data
+
+----RubyBoundary
+Content-Disposition: attachment; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+X-testheader-1: header 1
+X-testheader-2: header 2
+
+dummy data
+
+------------------------------aaaaaaaaaaaa--
+
+----RubyBoundary--

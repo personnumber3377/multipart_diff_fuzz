@@ -1,0 +1,25 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 322
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+----RubyBoundary
+Content-Disposition: form-data; name="name"
+
+contents
+from
+a
+file
+
+newlinens?
+yes please
+        
+[tab][CR] too
+
+----RubyBoundary
+Content-Disposition: form-data; name="tool"
+
+curl
+----RubyBoundary--

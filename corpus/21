@@ -1,0 +1,32 @@
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Transfer-Encoding: chunked
+Content-Type: multipart/form-data; boundary=RubyBoundary
+Expect: 100-continue
+
+cd
+--RubyBoundary--
+Content-Disposition: form-data; name="field1"
+
+dummy
+--RubyBoundary--
+Content-Disposition: form-data; name="field2"
+
+
+5
+dummy
+97
+
+--RubyBoundary--
+Content-Disposition: form-data; name="field3"; filename="file%TESTNUMBER.txt"
+Content-Type: text/plain
+
+
+4f
+This is data from a file
+
+--RubyBoundary----
+
+0
+

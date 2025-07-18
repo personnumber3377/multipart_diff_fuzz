@@ -1,0 +1,48 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 434
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+----RubyBoundary
+Content-Disposition: form-data; name="name"
+
+daniel
+----RubyBoundary
+Content-Disposition: form-data; name="tool"
+
+curl
+----RubyBoundary
+Content-Disposition: form-data; name="file"; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+
+foo-
+This is a moo-
+bar
+
+----RubyBoundary--
+POST /we/want/data/%TESTNUMBER0002.txt?coolsite=yes HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 434
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+----RubyBoundary
+Content-Disposition: form-data; name="name"
+
+daniel
+----RubyBoundary
+Content-Disposition: form-data; name="tool"
+
+curl
+----RubyBoundary
+Content-Disposition: form-data; name="file"; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+
+foo-
+This is a moo-
+bar
+
+----RubyBoundary--

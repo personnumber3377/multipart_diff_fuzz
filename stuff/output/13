@@ -1,0 +1,144 @@
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Transfer-Encoding: chunked
+Content-Type: multipart/form-data; boundary=RubyBoundary
+Expect: 100-continue
+
+385
+--RubyBoundary--
+Content-Disposition: form-data; name="fieldname"
+Content-Type: text/plain
+X-customheader-1: Header 1 data
+X-customheader-2: Header 2 data
+
+this is what we post to the silly web server
+--RubyBoundary--
+Content-Disposition: form-data; name="fieldnam"
+
+uhis is what we post to the silly web serve
+--RubyBoundary--
+Content-Disposition: form-data; name="multifile"
+Content-Type: multipart/mixed; boundary=RubyBoundary
+
+--RubyBoundary--
+Content-Disposition: attachment; filename="test%TESTNUMBER.filedata"
+Content-Type: application/octet-stream
+
+This is data from a file.
+
+--RubyBoundary--
+Content-Disposition: attachment; filename="test%TESTNUMBER.filedata"
+Content-Type: text/whatever
+
+
+ab
+This is data from a file.
+
+--RubyBoundary--
+Content-Disposition: attachment; filename="test%TESTNUMBER.filedata"
+Content-Type: text/whatever
+
+
+bb
+This is data from a file.
+
+--RubyBoundary----
+
+--RubyBoundary--
+Content-Disposition: form-data; name="filecontents"
+
+
+11b
+This is data from a file.
+
+--RubyBoundary--
+Content-Disposition: form-data; name="formlength"
+
+1433
+--RubyBoundary--
+Content-Disposition: form-data; name="standardinput"
+Content-Type: application/octet-stream
+
+
+16
+ Some data from stdin
+
+36
+
+--RubyBoundary----
+
+0
+
+POST /%TESTNUMBER0002 HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Transfer-Encoding: chunked
+Content-Type: multipart/form-data; boundary=RubyBoundary
+Expect: 100-continue
+
+385
+--RubyBoundary--
+Content-Disposition: form-data; name="fieldname"
+Content-Type: text/plain
+X-customheader-1: Header 1 data
+X-customheader-2: Header 2 data
+
+this is what we post to the silly web server
+--RubyBoundary--
+Content-Disposition: form-data; name="fieldnam"
+
+uhis is what we post to the silly web serve
+--RubyBoundary--
+Content-Disposition: form-data; name="multifile"
+Content-Type: multipart/mixed; boundary=RubyBoundary
+
+--RubyBoundary--
+Content-Disposition: attachment; filename="test%TESTNUMBER.filedata"
+Content-Type: application/octet-stream
+
+This is data from a file.
+
+--RubyBoundary--
+Content-Disposition: attachment; filename="test%TESTNUMBER.filedata"
+Content-Type: text/whatever
+
+
+ab
+This is data from a file.
+
+--RubyBoundary--
+Content-Disposition: attachment; filename="test%TESTNUMBER.filedata"
+Content-Type: text/whatever
+
+
+bb
+This is data from a file.
+
+--RubyBoundary----
+
+--RubyBoundary--
+Content-Disposition: form-data; name="filecontents"
+
+
+11b
+This is data from a file.
+
+--RubyBoundary--
+Content-Disposition: form-data; name="formlength"
+
+1433
+--RubyBoundary--
+Content-Disposition: form-data; name="standardinput"
+Content-Type: application/octet-stream
+
+
+16
+ Some data from stdin
+
+36
+
+--RubyBoundary----
+
+0
+

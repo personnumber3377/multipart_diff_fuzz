@@ -1,0 +1,11 @@
+--myboundary
+Content-Disposition: form-data; name="username"
+
+alice
+--myboundary
+Content-Disposition: form-data; name="file"; filename="hello.txt"
+Content-Type: text/plain
+
+hello world
+--myboundary--
+

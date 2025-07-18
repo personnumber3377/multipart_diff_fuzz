@@ -1,0 +1,38 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 930
+Content-Type: multipart/form-data; boundary=----------------------------9ef8d6205763
+
+------------------------------9ef8d6205763
+Content-Disposition: form-data; name="name"
+
+value
+------------------------------9ef8d6205763
+Content-Disposition: form-data; name="file"
+Content-Type: multipart/mixed; boundary=----------------------------aaaaaaaaaaaa
+
+Content-Disposition: attachment; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+
+dummy data
+
+------------------------------9ef8d6205763
+Content-Disposition: attachment; filename="test%TESTNUMBER.txt"
+Content-Type: magic/content
+Content-Transfer-Encoding: 8bit
+
+dummy data
+
+------------------------------9ef8d6205763
+Content-Disposition: attachment; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+X-testheader-1: header 1
+X-testheader-2: header 2
+
+dummy data
+
+------------------------------aaaaaaaaaaaa--
+
+------------------------------9ef8d6205763--

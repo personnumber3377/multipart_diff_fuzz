@@ -1,0 +1,14 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 235
+Content-Type: multipart/form-data; boundary=----------------------------b0b3d6d23991
+
+------------------------------b0b3d6d23991
+Content-Disposition: form-data; name="name"; filename="fie ld %TESTNUMBER"
+Content-Type: application/octet-stream
+
+data inside the file
+
+------------------------------b0b3d6d23991--

@@ -1,0 +1,21 @@
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Transfer-Encoding: chunked
+Content-Type: multipart/form-data; boundary=RubyBoundary
+Expect: 100-continue
+
+85
+--RubyBoundary--
+Content-Disposition: form-data; name="field"
+Content-Transfer-Encoding: base64
+
+
+4
+ZHVt
+3a
+bXk=
+--RubyBoundary----
+
+0
+

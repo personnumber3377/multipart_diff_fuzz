@@ -1,0 +1,53 @@
+POST http://remotehost:54321/we/want/%TESTNUMBER HTTP/1.1
+Host: remotehost:54321
+User-Agent: curl/%VERSION
+Accept: */*
+Proxy-Connection: Keep-Alive
+Expect: 100-continue
+Content-Length: 433
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+----RubyBoundary
+Content-Disposition: form-data; name="name"
+
+daniel
+----RubyBoundary
+Content-Disposition: form-data; name="tool"
+
+curl
+----RubyBoundary
+Content-Disposition: form-data; name="file"; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+
+foo-
+This is a moo-
+bar
+
+----RubyBoundary--
+POST http://remotehost:54321/we/want/%TESTNUMBER HTTP/1.1
+Host: remotehost:54321
+Proxy-Authorization: Digest username="uuuser", realm="many secrets", nonce="911", uri="/we/want/%TESTNUMBER", response="b479994d13e60f3aa192a67c5892ddc5"
+User-Agent: curl/%VERSION
+Accept: */*
+Proxy-Connection: Keep-Alive
+Expect: 100-continue
+Content-Length: 433
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+----RubyBoundary
+Content-Disposition: form-data; name="name"
+
+daniel
+----RubyBoundary
+Content-Disposition: form-data; name="tool"
+
+curl
+----RubyBoundary
+Content-Disposition: form-data; name="file"; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+
+foo-
+This is a moo-
+bar
+
+----RubyBoundary--

@@ -1,0 +1,12 @@
+POST /aws_sigv4/testapi/test HTTP/1.1
+Host: exam.ple.com:9000
+Authorization: AWS4-HMAC-SHA256 Credential=xxx/19700101/us-east-1/s3/aws4_request, SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=eaee0f1c5984ad5d81c8bc7805f28c7b83b35322de654b2ace18cb8cf6d5a9cb
+X-Amz-Date: 19700101T000000Z
+x-amz-content-sha256: UNSIGNED-PAYLOAD
+Content-Length: 154
+
+--------------------------qrstuvwxyz0123456789AB
+Content-Disposition: attachment; name="foo"
+
+bar
+--------------------------qrstuvwxyz0123456789AB--

@@ -1,0 +1,18 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 341
+Content-Type: multipart/form-data; boundary=----------------------------212d9006ceb5
+
+------------------------------212d9006ceb5
+Content-Disposition: form-data; name="name"
+Content-Type: moo/foo-.4
+
+daniel
+------------------------------212d9006ceb5
+Content-Disposition: form-data; name="html"
+Content-Type: text/html;charset=verymoo
+
+<body>hello</body>
+------------------------------212d9006ceb5--

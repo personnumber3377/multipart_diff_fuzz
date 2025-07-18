@@ -1,0 +1,20 @@
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 201
+
+Content-Disposition: form-data; name="name"; filename="a.pdf"
+Content-Type: application/pdf
+
+a
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 196
+
+Content-Disposition: form-data; name="name"; filename="b.jpg"
+Content-Type: image/jpeg
+
+b

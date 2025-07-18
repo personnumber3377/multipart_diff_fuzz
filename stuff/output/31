@@ -1,0 +1,60 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 1240
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+----RubyBoundary
+Content-Disposition: form-data; name="name"
+
+daniel
+----RubyBoundary
+Content-Disposition: form-data; name="tool"
+
+curl
+----RubyBoundary
+Content-Disposition: form-data; name="str1"
+
+@literal
+----RubyBoundary
+Content-Disposition: form-data; name="str2"
+
+<verbatim;type=xxx/yyy
+----RubyBoundary
+Content-Disposition: form-data; name="file"; filename="fakerfile"
+Content-Type: moo/foobar
+
+foo bar
+This is a bar foo
+bar
+foo
+
+----RubyBoundary
+Content-Disposition: form-data; name="file2"; filename="test%TESTNUMBER.txt"
+Content-Type: text/plain
+
+foo bar
+This is a bar foo
+bar
+foo
+
+----RubyBoundary
+Content-Disposition: form-data; name="file3"; filename="f\\\\ak\\\\er,\\an\\d;.t\"xt"
+Content-Type: mo/foo
+
+foo bar
+This is a bar foo
+bar
+foo
+
+----RubyBoundary
+Content-Disposition: form-data; name="file4"; filename="A\\AA\"\"\\\"ZZZ"
+Content-Type: text/plain
+
+foo bar
+This is a bar foo
+bar
+foo
+
+----RubyBoundary--

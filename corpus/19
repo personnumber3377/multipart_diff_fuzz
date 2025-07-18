@@ -1,0 +1,22 @@
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Content-Length: 162
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+--RubyBoundary--
+Content-Disposition: form-data; name="name"
+
+short value
+--RubyBoundary----
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Content-Length: 179
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+--RubyBoundary--
+Content-Disposition: form-data; name="name"
+
+long value for length change
+--RubyBoundary----

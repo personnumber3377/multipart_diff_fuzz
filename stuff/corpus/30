@@ -1,0 +1,9 @@
+USER anonymous
+PASS ftp@example.com
+PWD
+CWD path
+EPSV
+TYPE I
+SIZE file%TESTNUMBER
+RETR file%TESTNUMBER
+QUIT

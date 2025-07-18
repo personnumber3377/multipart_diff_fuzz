@@ -1,0 +1,54 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 1324
+Content-Type: multipart/form-data; boundary=RubyBoundary
+
+----RubyBoundary
+Content-Disposition: form-data; name="file"; filename="faker,and;.txt"
+Content-Type: mo/foo
+
+foo bar
+This is a bar foo
+bar
+foo
+
+----RubyBoundary
+Content-Disposition: form-data; name="file2"; filename="test%TESTNUMBER,and;.txt"
+Content-Type: text/plain
+
+foo bar
+This is a bar foo
+bar
+foo
+
+----RubyBoundary
+Content-Disposition: form-data; name="file3"
+Content-Type: multipart/mixed; boundary=----------------------------7f0e85a48b0b
+
+Content-Disposition: attachment; filename="test%TESTNUMBER,and;.txt"
+Content-Type: m/f
+
+foo bar
+This is a bar foo
+bar
+foo
+
+Content-Disposition: attachment; filename="test%TESTNUMBER,and;.txt"
+Content-Type: text/plain
+
+foo bar
+This is a bar foo
+bar
+foo
+
+
+Content-Disposition: form-data; name="a"
+
+{"field1":"value1","field2":"value2"}
+Content-Disposition: form-data; name="b"; filename="param_b"
+Content-Type: text/foo; charset=utf-8
+
+ \value1;type="whatever" 
+----RubyBoundary--

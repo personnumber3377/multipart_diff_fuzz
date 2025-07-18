@@ -1,0 +1,12 @@
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 157
+Content-Type: multipart/form-data; boundary=----------------------------4f12fcdaa3bc
+
+------------------------------4f12fcdaa3bc
+Content-Disposition: form-data; name="name"
+
+daniel
+------------------------------4f12fcdaa3bc--

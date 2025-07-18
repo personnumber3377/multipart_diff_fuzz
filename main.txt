@@ -1,0 +1,42 @@
+package main
+
+import (
+	"fmt"
+	"io"
+	"mime/multipart"
+	"strings"
+)
+
+func main() {
+	body := `--0016e68ee29c5d515f04cedf6733
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Disposition: form-data; name=text
+Content-Transfer-Encoding: quoted-printable
+
+words words words words words words words words words words words words wor=
+ds words words words
+--0016e68ee29c5d515f04cedf6733--
+`
+
+	r := multipart.NewReader(strings.NewReader(body), "0016e68ee29c5d515f04cedf6733")
+
+	for {
+		part, err := r.NextPart()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println("=== PART HEADER ===")
+		for k, v := range part.Header {
+			fmt.Printf("%s: %v\n", k, v)
+		}
+
+		content, _ := io.ReadAll(part)
+		fmt.Println("=== BODY ===")
+		fmt.Println(string(content))
+	}
+}
+

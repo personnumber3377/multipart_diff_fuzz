@@ -1,0 +1,49 @@
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Content-Length: 0
+
+POST /%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+Accept: */*
+Transfer-Encoding: chunked
+Content-Type: multipart/form-data; boundary=RubyBoundary
+Expect: 100-continue
+
+1c1
+--RubyBoundary--
+Content-Disposition: form-data; name="greeting"
+Content-Type: application/X-Greeting
+Content-Transfer-Encoding: base64
+X-Test-Number: %TESTNUMBER
+
+aGVsbG8=
+--RubyBoundary--
+Content-Disposition: form-data; filename="file%TESTNUMBER.txt"
+Content-Type: text/plain
+
+This is data from a file
+
+--RubyBoundary--
+Content-Disposition: form-data
+
+
+1
+d
+1
+u
+1
+m
+1
+m
+1
+y
+1
+
+
+36
+
+--RubyBoundary----
+
+0
+

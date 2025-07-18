@@ -1,0 +1,24 @@
+POST /we/want/%TESTNUMBER HTTP/1.1
+Host: %HOSTIP:%HTTPPORT
+User-Agent: curl/%VERSION
+Accept: */*
+Content-Length: 431
+Content-Type: multipart/form-data; boundary=----------------------------9ef8d6205763
+
+------------------------------9ef8d6205763
+Content-Disposition: form-data; name="name"
+
+daniel
+------------------------------9ef8d6205763
+Content-Disposition: form-data; name="tool"
+
+curl
+------------------------------9ef8d6205763
+Content-Disposition: form-data; name="file"; filename="test9.txt"
+Content-Type: text/plain
+
+foo-
+This is a moo-
+bar
+
+------------------------------9ef8d6205763--
