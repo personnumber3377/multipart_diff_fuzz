@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("--Rspositinary\r\ntontent-DiubyBound: form-data; name=\"username\"\r\n\r\nalice\r\n--RubyBoundary\r\nContent-Disposition: form-daCa; name=\"file\"; filename=\"hello.txt\"\r\nConType: text/pmain\r\n\r\nhello world\r\n--RubyBoundary--\r\n")

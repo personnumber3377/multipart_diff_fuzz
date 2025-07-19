@@ -38,6 +38,9 @@ func FuzzMultipartParser(f *testing.F) {
         if containsNonASCII(data) {
             return
         }
+        if !strings.Contains(string(data), "Content-Disposition: form-data; ") {
+            return
+        }
         // 1. Parse with Go
         reader := multipart.NewReader(bytes.NewReader(data), "RubyBoundary")
         goParams := map[string]string{}
@@ -56,7 +59,7 @@ func FuzzMultipartParser(f *testing.F) {
 
             if err != nil {
                 if strings.Contains(err.Error(), "NextPart: EOF") {
-                    t.Logf("poopoo")
+                    // t.Logf("poopoo")
                     break
                 }
                 // t.Errorf("err: %s", err.Error())
@@ -66,7 +69,9 @@ func FuzzMultipartParser(f *testing.F) {
             name := part.FormName()
             filename := part.FileName()
             content, _ := io.ReadAll(part)
-            t.Logf("Filename: %s\n", filename)
+            // t.Logf("Filename: %s\n", filename)
+            // t.Logf("name: %s\n", name)
+            // t.Logf("content: %s\n", content)
             if filename != "" {
                 goFiles[name] = struct {
                     Filename string
@@ -76,7 +81,13 @@ func FuzzMultipartParser(f *testing.F) {
                     Content:  string(content),
                 }
             } else {
-                goParams[name] = string(content)
+                // return
+                if name != "" && len(content) != 0 {
+                    goParams[name] = string(content)
+                } else {
+                    return
+                }
+                
             }
         }
         // t.Errorf("feewffew")

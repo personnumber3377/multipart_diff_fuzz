@@ -1,10 +1,6 @@
 --RubyBoundary
-tontent-Dispositin: form-data; name="username"
-
-alice
---RubyBoundary
 Content-Disposition: form-daCa; name="file"; filename="hello.txt"
-Content-Type: text/plain
+ConType: text/pmain
 
 hello world
 --RubyBoundary--

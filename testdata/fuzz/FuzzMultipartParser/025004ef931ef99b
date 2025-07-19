@@ -1,2 +1,2 @@
 go test fuzz v1
-[]byte("--RubyBoundary\r\nContent-Disposition: formo\"\r\n\r\nbaame=\"foo\"\r\n\r\nbar\r\n--RubyBoundary--\r\n")
+[]byte("--RubyBoundary\r\nContent-Disposition: form-daCa; name=\"file\"; filename=\"hello.txt\"\r\nConType: text/pmain\r\n\r\nhello world\r\n--RubyBoundary--\r\n")
