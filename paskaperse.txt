@@ -2,12 +2,12 @@ package main
 
 import (
     "bytes"
-    "encoding/json"
+    // "encoding/json"
     "io"
     // "log"
     "mime/multipart"
     "os"
-    "os/exec"
+    // "os/exec"
     "strings"
     "testing"
 )
@@ -68,7 +68,7 @@ func FuzzMultipartParser(f *testing.F) {
         }
         // t.Errorf("feewffew")
         // 2. Write to file
-	
+	/*
 	if err := os.WriteFile("oof.bin", data, 0644); err != nil {
             t.Fatalf("write error: %v", err)
         }
@@ -111,6 +111,6 @@ func FuzzMultipartParser(f *testing.F) {
                 }
             }
         }
-	
+	*/
     })
 }

@@ -1,7 +1,10 @@
-m-RubyBoundary
-Content-Disposi••
-		tion: fyy•¨••••••
-																		m-data; uame="foo"
-								(									
-bar
--0RubyaryBoundary--ð
+--RubyBoundary
+Content-Disposition: form-data; name="aru\ñmse"³
+
+alice
+--RubyBoundarr
+Content-Disposition: form-data; name="file"; filename="hello.txt"o
+Cntent-Type: text/plain
+
+hello world
+--RubyBoundayy--
