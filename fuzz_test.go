@@ -23,7 +23,7 @@ func LoadCorpus(f *testing.F) {
 
 func FuzzMultipartParser(f *testing.F) {
     f.Add([]byte("--RubyBoundary\r\nContent-Disposition: form-data; name=\"foo\"\r\n\r\nbar\r\n--RubyBoundary--\r\n"))
-
+    LoadCorpus(f)
     f.Fuzz(func(t *testing.T, data []byte) {
         // 1. Parse with Go
         reader := multipart.NewReader(bytes.NewReader(data), "RubyBoundary")
@@ -109,6 +109,13 @@ func FuzzMultipartParser(f *testing.F) {
                 if goFile.Content != fileMap["content"] {
                     t.Fatalf("Content mismatch for %q:\nGo: %q\nRuby: %q", k, goFile.Content, fileMap["content"])
                 }
+            }
+        }
+
+        // 5. Check that the goFiles do not have extra files not in rubyfiles.
+        for k := range goFiles {
+            if _, ok := rubyOutput["files"].(map[string]interface{})[k]; !ok {
+                t.Fatalf("Ruby missing file for key %q", k)
             }
         }
 	

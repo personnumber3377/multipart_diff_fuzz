@@ -1,10 +1,7 @@
---RubyBoundary
-Content-Disposition: form-data; name="aru\Òmse"≥
+--RubyBoundandaÎContent-Disposùtionªry-f-orm-dat
 
-alice
---RubyBoundarr
-Content-Disposition: form-data; name="file"; filename="hello.txt"o
-Cntent-Type: text/plain
+bara; name="foo"
 
-hello world
---RubyBoundayy--
+bar
+--RubyBoury
+is: f
