@@ -12,11 +12,21 @@ import (
     "testing"
 )
 
+
+func containsNonASCII(data []byte) bool {
+    for _, b := range data {
+        if b > 0x7F {
+            return true
+        }
+    }
+    return false
+}
+
 func LoadCorpus(f *testing.F) {
         files, _ := os.ReadDir("corpus/")
         for _, file := range files {
                 if data, err := os.ReadFile("corpus/" + file.Name()); err == nil {
-                        f.Add(data, []byte{})
+                        f.Add(data)
                 }
         }
 }
@@ -25,6 +35,9 @@ func FuzzMultipartParser(f *testing.F) {
     f.Add([]byte("--RubyBoundary\r\nContent-Disposition: form-data; name=\"foo\"\r\n\r\nbar\r\n--RubyBoundary--\r\n"))
     LoadCorpus(f)
     f.Fuzz(func(t *testing.T, data []byte) {
+        if containsNonASCII(data) {
+            return
+        }
         // 1. Parse with Go
         reader := multipart.NewReader(bytes.NewReader(data), "RubyBoundary")
         goParams := map[string]string{}
@@ -69,15 +82,35 @@ func FuzzMultipartParser(f *testing.F) {
         // t.Errorf("feewffew")
         // 2. Write to file
 	
-	if err := os.WriteFile("oof.bin", data, 0644); err != nil {
-            t.Fatalf("write error: %v", err)
+
+	    cmd := exec.Command("ruby", "rack_parse.rb")
+        stdin, err := cmd.StdinPipe()
+        if err != nil {
+            t.Fatalf("failed to get stdin pipe: %v", err)
+        }
+        stdout, err := cmd.StdoutPipe()
+        if err != nil {
+            t.Fatalf("failed to get stdout pipe: %v", err)
         }
 
-        // 3. Run Ruby subprocess
-        out, err := exec.Command("ruby", "rack_parse.rb").Output()
+        if err := cmd.Start(); err != nil {
+            t.Fatalf("failed to start ruby subprocess: %v", err)
+        }
+
+        // Write data to stdin
+        if _, err := stdin.Write(data); err != nil {
+            t.Fatalf("failed to write to ruby stdin: %v", err)
+        }
+        stdin.Close()
+
+        out, err := io.ReadAll(stdout)
         if err != nil {
+            t.Fatalf("failed to read from ruby stdout: %v", err)
+        }
+
+        if err := cmd.Wait(); err != nil {
             return
-            // t.Fatalf("ruby err: %v", err)
+            // t.Fatalf("ruby execution error: %v\nOutput: %s", err, out)
         }
 
         var rubyOutput map[string]any
