@@ -20,7 +20,7 @@ result = {
 }
 
 for part in msg.walk():
-    print("oof")
+    # print("oof")
     # Skip multipart containers
     if part.get_content_maintype() == "multipart":
         continue
@@ -30,14 +30,14 @@ for part in msg.walk():
 
     # Get disposition and parameters
     cd = part.get("Content-Disposition")
-    print("part.__repr__(): "+str(part.__repr__()))
-    print("part: "+str(part))
+    # print("part.__repr__(): "+str(part.__repr__()))
+    # print("part: "+str(part))
     if not cd or not cd.lower().startswith("form-data"):
-        print("part: "+str(part))
-        print("part.__repr__(): "+str(part.__repr__()))
+        # print("part: "+str(part))
+        # print("part.__repr__(): "+str(part.__repr__()))
         # continue  # skip invalid or unsupported parts
-        print("cd: "+str(cd))
-        print("Invalid...")
+        # print("cd: "+str(cd))
+        # print("Invalid...")
         exit(1)
 
     # Parse disposition parameters (e.g., name, filename)
@@ -47,8 +47,8 @@ for part in msg.walk():
 
     if name is None:
         # continue  # no usable name -> skip
-        print("feeeeeeeeee")
-        print("Invalid...")
+        # print("feeeeeeeeee")
+        # print("Invalid...")
         exit(1)
 
     content = part.get_payload(decode=True)
