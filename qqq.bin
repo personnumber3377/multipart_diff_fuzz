@@ -1,6 +1,6 @@
 --RubyBoundary
-Content-Disposition: form-daCa; name="file"; filename="hello.txt"
-ConType: text/pmain
+Content-Disposition: form-data; name="file"; filename="hello.txt"
+Content-Type: text plain
 
 hello world
 --RubyBoundary--

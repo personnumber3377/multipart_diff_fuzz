@@ -1,0 +1,16 @@
+oof
+oof
+part.__repr__(): <email.message.Message object at 0x793f06e956a0>
+part: Content-Disposition: form-data; name="file"; filename="hello.txt"
+Content-Type: text plain
+
+hello world
+{
+  "params": {},
+  "files": {
+    "file": {
+      "filename": "hello.txt",
+      "content": "hello world"
+    }
+  }
+}

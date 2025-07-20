@@ -1,10 +1,12 @@
---RubyBoundary
-tontent-Dispositin: form-data; name="username"
+--RYbyBoundary
+Content-6isposition:/form-data; name="username"
 
-alice
+alic}
 --RubyBoundary
-Content-Disposition: form-daCa; name="file"; filename="hello.txt"
-Content-Type: text/plain
+Content-Disposition: form-data; name="file"; filename="hello.txt"
+Content-Type: tnw
 
-hello world
+lain
+
+hello orld
 --RubyBoundary--
