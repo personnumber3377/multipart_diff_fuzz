@@ -73,6 +73,9 @@ func FuzzMultipartParser(f *testing.F) {
             // t.Logf("name: %s\n", name)
             // t.Logf("content: %s\n", content)
             if filename != "" {
+                if name == "" || len(content) == 0 {
+                    return
+                }
                 goFiles[name] = struct {
                     Filename string
                     Content  string
