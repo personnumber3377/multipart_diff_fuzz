@@ -1,0 +1,12 @@
+--RYbyBoundary
+Content-6isposition:/form-data; name="username"
+
+alic}
+--RubyBoundary
+Content-Disposition: form-data; name="file"; filename="hello.txt"
+Content-Type: tnw
+
+lain
+
+hello orld
+--RubyBoundary--

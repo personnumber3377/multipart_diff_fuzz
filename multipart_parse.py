@@ -2,12 +2,14 @@ import email
 import sys
 import json
 
+
+
 # Configure boundary (you can also auto-detect if needed)
 boundary = "RubyBoundary"
 
 # Read raw multipart body from stdin
 body = sys.stdin.buffer.read()
-
+print(body.decode("ascii"), end="")
 # Wrap it in a valid MIME message
 wrapped = b"Content-Type: multipart/form-data; boundary=" + boundary.encode() + b"\r\n\r\n" + body
 
@@ -64,5 +66,5 @@ for part in msg.walk():
         result["params"][name] = content.decode(errors="replace")
 
 # Output as JSON
-print(json.dumps(result, indent=2))
+# print(json.dumps(result, indent=2))
 
